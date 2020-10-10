@@ -53,6 +53,11 @@ using System.Collections.Generic;
             Console.WriteLine("--------");
             Console.WriteLine(" " + board[7] + "|" + board[8] + "|" + board[9]);
         }
+        /// <summary>
+        /// Gets the user move.
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <returns></returns>
         public static int getUserMove(char[] board)
         {
             int[] validCells = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -64,9 +69,23 @@ using System.Collections.Generic;
                     return index;
             }
         }
+        /// <summary>
+        /// Determines whether [is space free] [the specified board].
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <param name="index">The index.</param>
+        /// <returns>
+        ///   <c>true</c> if [is space free] [the specified board]; otherwise, <c>false</c>.
+        /// </returns>
         public static bool isSpaceFree(char[] board, int index)
         {
             return board[index] == ' ';
+        }
+        public static void makeMove(char[] board, int index, char Letter)
+        {
+            Boolean spaceFree = isSpaceFree(board, index);
+            if (spaceFree) board[index] = Letter;
+
         }
     }
 }

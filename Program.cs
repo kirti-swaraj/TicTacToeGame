@@ -10,6 +10,7 @@ namespace TicTacToeGame
             char userLetter = TicTacToe.chooseUserLetter();
             TicTacToe.showBoard(board);
             int userMove = TicTacToe.getUserMove(board);
+            TicTacToe.makeMove(board, userMove, userLetter);
         }
     }
 }
