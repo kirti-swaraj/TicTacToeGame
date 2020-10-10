@@ -17,6 +17,9 @@ using System.Collections.Generic;
   /// </summary>
     public class TicTacToe
     {
+        public const int HEAD = 0;
+        public const int TAIL = 1;
+        public enum Player { USER,COMPUTER};
         /// <summary>
         /// Creates the board.
         /// </summary>
@@ -81,11 +84,27 @@ using System.Collections.Generic;
         {
             return board[index] == ' ';
         }
+        /// <summary>
+        /// Makes the move.
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="Letter">The letter.</param>
         public static void makeMove(char[] board, int index, char Letter)
         {
             Boolean spaceFree = isSpaceFree(board, index);
             if (spaceFree) board[index] = Letter;
 
+        }
+        public static Player getWhoStartsFirst()
+        {
+            int toss = getOneFromRandomChoices(2);
+            return (toss == HEAD) ? Player.USER : Player.COMPUTER;
+        }
+        public static int getOneFromRandomChoices(int choices)
+        {
+            Random random = new Random();
+            return (int)(random.Next() * 10) % choices;
         }
     }
 }

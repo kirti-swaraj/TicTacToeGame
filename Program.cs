@@ -11,6 +11,7 @@ namespace TicTacToeGame
             TicTacToe.showBoard(board);
             int userMove = TicTacToe.getUserMove(board);
             TicTacToe.makeMove(board, userMove, userLetter);
+            TicTacToe.Player player = TicTacToe.getWhoStartsFirst();
         }
     }
 }
