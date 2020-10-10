@@ -9,7 +9,8 @@ namespace TicTacToeGame
 {
 using System;
 using System.Collections.Generic;
-using System.Text;
+    using System.Reflection.Metadata.Ecma335;
+    using System.Text;
 
   /// <summary>
   /// Creating a class
@@ -29,6 +30,16 @@ using System.Text;
             }
 
             return board;
+        }
+        /// <summary>
+        /// Chooses the user letter.
+        /// </summary>
+        /// <returns></returns>
+        public static char chooseUserLetter()
+        {
+            Console.WriteLine("Choose your letter 'X' or 'O' :");
+            string userLetter = Console.ReadLine();
+            return char.ToUpper(userLetter[0]);
         }
     }
 }
