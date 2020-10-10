@@ -7,6 +7,7 @@ namespace TicTacToeGame
         static void Main(string[] args)
         {
             char[] board= TicTacToe.CreateBoard();
+            char userLetter = TicTacToe.chooseUserLetter();
         }
     }
 }
