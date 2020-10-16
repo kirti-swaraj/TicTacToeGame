@@ -145,11 +145,18 @@ using System.Collections.Generic;
         {
             int winningMove = getWinningMove(board, computerLetter);
             if (winningMove != 0)
-                return winningMove;
+            return winningMove;
             int userWinningMove = getWinningMove(board, userLetter);
-            if (userWinningMove != 0) return userWinningMove;
+            if (userWinningMove != 0) 
+            return userWinningMove;
             int[] cornerMoves = { 1, 3, 7, 9 };
             int computerMove = getRandomMoveFromList(board, cornerMoves);
+            if (computerMove != 0)
+            return computerMove;
+            if (isSpaceFree(board, 5))
+                return 5;
+            int[] sideMoves = { 2, 4, 6, 8 };
+            computerMove = getRandomMoveFromList(board, sideMoves);
             if (computerMove != 0)
                 return computerMove;
             return 0;
