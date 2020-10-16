@@ -10,6 +10,7 @@ namespace TicTacToeGame
 using System;
 using System.Collections.Generic;
     using System.Reflection.Metadata.Ecma335;
+    using System.Security.Cryptography.X509Certificates;
     using System.Text;
 
   /// <summary>
@@ -41,7 +42,7 @@ using System.Collections.Generic;
         public static char chooseUserLetter()
         {
             Console.WriteLine("Choose your letter 'X' or 'O' :");
-            string userLetter = Console.ReadLine();
+            String userLetter = Console.ReadLine();
             return char.ToUpper(userLetter[0]);
         }
         /// <summary>
@@ -140,15 +141,29 @@ using System.Collections.Generic;
             char[] boardCopy = new char[10];
             return boardCopy;
         }
-        public static int getComputerMove(char[] board, char computerLetter,char userLetter)
+        public static int getComputerMove(char[] board, char computerLetter, char userLetter)
         {
             int winningMove = getWinningMove(board, computerLetter);
             if (winningMove != 0)
-            return winningMove;
+                return winningMove;
             int userWinningMove = getWinningMove(board, userLetter);
             if (userWinningMove != 0) return userWinningMove;
+            int[] cornerMoves = { 1, 3, 7, 9 };
+            int computerMove = getRandomMoveFromList(board, cornerMoves);
+            if (computerMove != 0)
+                return computerMove;
             return 0;
+        }
+            public static int getRandomMoveFromList(char[] board,int[] moves)
+            {
+                for(int index=0; index<moves.Length;index++)
+                {
+                    if (isSpaceFree(board, moves[index]))
+                        return moves[index];
+                }
+                return 0;
+            }
         }
 
     }
-}
+
