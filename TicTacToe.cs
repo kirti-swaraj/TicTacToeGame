@@ -44,7 +44,6 @@ using System.Collections.Generic;
             string userLetter = Console.ReadLine();
             return char.ToUpper(userLetter[0]);
         }
-        
         /// <summary>
         /// Shows the board.
         /// </summary>
@@ -141,12 +140,15 @@ using System.Collections.Generic;
             char[] boardCopy = new char[10];
             return boardCopy;
         }
-        public static int getComputerMove(char[] board, char computerLetter)
+        public static int getComputerMove(char[] board, char computerLetter,char userLetter)
         {
             int winningMove = getWinningMove(board, computerLetter);
             if (winningMove != 0)
             return winningMove;
+            int userWinningMove = getWinningMove(board, userLetter);
+            if (userWinningMove != 0) return userWinningMove;
             return 0;
         }
+
     }
 }

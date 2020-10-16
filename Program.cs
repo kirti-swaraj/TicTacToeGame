@@ -4,7 +4,7 @@ namespace TicTacToeGame
 {
     class Program
     {
-        private static char computerLetter;
+        private static readonly char computerLetter;
         static void Main(string[] args)
         {
             char[] board= TicTacToe.CreateBoard();
@@ -14,7 +14,8 @@ namespace TicTacToeGame
             char userLetter = TicTacToe.chooseUserLetter();
             Console.WriteLine("Check if won" +TicTacToe.isWinner(board,userLetter));
             // computer move
-             int computerMove = TicTacToe.getComputerMove(board, computerLetter);
+             int computerMove = TicTacToe.getComputerMove(board, computerLetter,userLetter);
+
         }
 
     }
