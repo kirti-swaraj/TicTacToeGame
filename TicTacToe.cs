@@ -20,6 +20,7 @@ using System.Collections.Generic;
     {
         public const int HEAD = 0;
         public const int TAIL = 1;
+        public enum GameStatus { WON,FULL_BOARD,CONTINUE};
         public enum Player { USER,COMPUTER};
         /// <summary>
         /// Creates the board.
@@ -122,6 +123,12 @@ using System.Collections.Generic;
                 (b[1] == ch && b[5] == ch && b[9] == ch) ||
                 (b[7] == ch && b[5] == ch && b[3] == ch));
         }
+        /// <summary>
+        /// Gets the winning move.
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <param name="letter">The letter.</param>
+        /// <returns></returns>
         public static int getWinningMove(char[] board, char letter)
         {
             for(int index = 1; index<board.Length;index++)
@@ -136,6 +143,11 @@ using System.Collections.Generic;
             }
             return 0;
         }
+        /// <summary>
+        /// Gets the copy of board.
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <returns></returns>
         public static char[]getCopyOfBoard(char[] board)
         {
             char[] boardCopy = new char[10];
@@ -161,7 +173,13 @@ using System.Collections.Generic;
                 return computerMove;
             return 0;
         }
-            public static int getRandomMoveFromList(char[] board,int[] moves)
+        /// <summary>
+        /// Gets the random move from list.
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <param name="moves">The moves.</param>
+        /// <returns></returns>
+        public static int getRandomMoveFromList(char[] board,int[] moves)
             {
                 for(int index=0; index<moves.Length;index++)
                 {
@@ -170,7 +188,49 @@ using System.Collections.Generic;
                 }
                 return 0;
             }
-        }
+        /// <summary>
+        /// Gets the game status.
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <param name="move">The move.</param>
+        /// <param name="letter">The letter.</param>
+        /// <param name="WonMessage">The won message.</param>
+        /// <returns></returns>
+        public static GameStatus getGameStatus(char[] board,int move, char letter, String WonMessage)
+        {
+            makeMove(board, move, letter);
+            if(isWinner(board,letter))
+            {
+                showBoard(board);
+                Console.WriteLine(WonMessage);
+                return GameStatus.WON;
+            }
+            if(isBoardFull(board))
+            {
+                showBoard(board);
+                Console.WriteLine("Game is Tie");
+                return GameStatus.FULL_BOARD;
+            }
+            return GameStatus.CONTINUE;
 
+        }
+        /// <summary>
+        /// Determines whether [is board full] [the specified board].
+        /// </summary>
+        /// <param name="board">The board.</param>
+        /// <returns>
+        ///   <c>true</c> if [is board full] [the specified board]; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool isBoardFull(char[] board)
+        {
+            for(int index=1;index<board.Length;index++)
+            {
+                if (isSpaceFree(board, index))
+                return false;
+            }
+            return true;
+        }
     }
+
+ }
 
