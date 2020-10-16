@@ -4,14 +4,18 @@ namespace TicTacToeGame
 {
     class Program
     {
+        public const int HEAD = 0;
+        public const int TAIL = 1;
+        public enum Player { USER,COMPUTER};
+
         static void Main(string[] args)
         {
             char[] board= TicTacToe.CreateBoard();
-            char userLetter = TicTacToe.chooseUserLetter();
             TicTacToe.showBoard(board);
             int userMove = TicTacToe.getUserMove(board);
-            TicTacToe.makeMove(board, userMove, userLetter);
             TicTacToe.Player player = TicTacToe.getWhoStartsFirst();
+            char userLetter = TicTacToe.chooseUserLetter();
+            Console.WriteLine("Check if won" +TicTacToe.isWinner(board,userLetter));
         }
     }
 }

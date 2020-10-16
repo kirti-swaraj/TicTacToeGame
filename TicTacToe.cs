@@ -96,6 +96,10 @@ using System.Collections.Generic;
             if (spaceFree) board[index] = Letter;
 
         }
+        /// <summary>
+        /// Gets the who starts first.
+        /// </summary>
+        /// <returns></returns>
         public static Player getWhoStartsFirst()
         {
             int toss = getOneFromRandomChoices(2);
@@ -105,6 +109,17 @@ using System.Collections.Generic;
         {
             Random random = new Random();
             return (int)(random.Next() * 10) % choices;
+        }
+        public static bool isWinner(char[] b, char ch)
+        { 
+            return((b[1]==ch && b[2]==ch && b[3]==ch) ||
+                (b[4] == ch && b[5] == ch && b[6] == ch) ||
+                (b[7] == ch && b[8] == ch && b[9] == ch) ||
+                (b[1] == ch && b[4] == ch && b[7] == ch) ||
+                (b[2] == ch && b[5] == ch && b[8] == ch) ||
+                (b[3] == ch && b[6] == ch && b[9] == ch) ||
+                (b[1] == ch && b[5] == ch && b[9] == ch) ||
+                (b[7] == ch && b[5] == ch && b[3] == ch));
         }
     }
 }
