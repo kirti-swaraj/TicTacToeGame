@@ -33,9 +33,10 @@ namespace TicTacToeGame
                     player = TicTacToe.Player.USER;
                 }
                 if (gameStatus.Equals(TicTacToe.GameStatus.CONTINUE)) continue;
-                gameIsPlaying = false;
-
-            }
+                TicTacToe.playAgain();
+               
+             }
+            
         }
 
     }

@@ -230,6 +230,18 @@ using System.Collections.Generic;
             }
             return true;
         }
+        /// <summary>
+        /// Plays the again.
+        /// </summary>
+        /// <returns></returns>
+        public static bool playAgain()
+        {
+            Console.WriteLine("Do you want to play again?(yes or no)");
+            String option = Console.ReadLine().ToLower();
+            if (option.Equals("yes"))
+            return true;
+            return false;
+        }
     }
 
  }
